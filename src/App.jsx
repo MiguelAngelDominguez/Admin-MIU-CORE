@@ -143,7 +143,7 @@ export default function App() {
                         />
                     )}
                 />
-                {/* <Autocomplete
+                <Autocomplete
                     multiple
                     id="tags-outlined"
                     options={top101Films}
@@ -157,8 +157,8 @@ export default function App() {
                             placeholder="Favorites"
                         />
                     )}
-                /> */}
-                {/* <Autocomplete
+                />
+                <Autocomplete
                     multiple
                     id="tags-filled"
                     options={top101Films.map((option) => option.title)}
@@ -177,7 +177,7 @@ export default function App() {
                             placeholder="Favorites"
                         />
                     )}
-                /> */}
+                />
                 <Autocomplete
                     multiple
                     id="tags-readOnly"
