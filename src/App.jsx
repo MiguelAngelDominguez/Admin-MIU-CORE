@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { Autocomplete, Box, Button, Chip, Stack, TextField } from "@mui/material";
+import { Autocomplete, Box, Button, Checkbox, Chip, Stack, TextField } from "@mui/material";
 import { createFilterOptions } from '@mui/material/Autocomplete';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 const filter = createFilterOptions();
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function App() {
     const options = top101Films.map((option) => {
@@ -126,8 +130,9 @@ export default function App() {
                 sx={{ width: 300 }}
                 renderInput={(params) => <TextField {...params} label="With categories" />}
             />
-
+            <h2>Multiple Values</h2>
             <Stack spacing={3} sx={{ width: 500 }}>
+                <h3>Border-block-end</h3>
                 <Autocomplete
                     multiple
                     id="tags-standard"
@@ -143,6 +148,7 @@ export default function App() {
                         />
                     )}
                 />
+                <h3>Normal Multi-Values</h3>
                 <Autocomplete
                     multiple
                     id="tags-outlined"
@@ -158,6 +164,7 @@ export default function App() {
                         />
                     )}
                 />
+                <h3>BackGround-gray</h3>
                 <Autocomplete
                     multiple
                     id="tags-filled"
@@ -178,6 +185,7 @@ export default function App() {
                         />
                     )}
                 />
+                <h3>no-Modificate</h3>
                 <Autocomplete
                     multiple
                     id="tags-readOnly"
@@ -188,8 +196,43 @@ export default function App() {
                         <TextField {...params} label="readOnly" placeholder="Favorites" />
                     )}
                 />
+                <h3>First Fixed Option </h3>
+                <Autocomplete
+                    multiple
+                    id="checkboxes-tags-demo"
+                    options={top101Films}
+                    disableCloseOnSelect
+                    getOptionLabel={(option) => option.title}
+                    renderOption={(props, option, { selected }) => (
+                        <li {...props}>
+                            <Checkbox
+                                icon={icon}
+                                checkedIcon={checkedIcon}
+                                style={{ marginRight: 8 }}
+                                checked={selected}
+                            />
+                            {option.title}
+                        </li>
+                    )}
+                    style={{ width: 500 }}
+                    renderInput={(params) => (
+                        <TextField {...params} label="Checkboxes" placeholder="Favorites" />
+                    )}
+                />
+                <h3>Limit tag</h3>
+                <Autocomplete
+                    multiple
+                    limitTags={2}
+                    id="multiple-limit-tags"
+                    options={top101Films}
+                    getOptionLabel={(option) => option.title}
+                    defaultValue={[top101Films[13], top101Films[12], top101Films[11]]}
+                    renderInput={(params) => (
+                        <TextField {...params} label="limitTags" placeholder="Favorites" />
+                    )}
+                    sx={{ width: '500px' }}
+                />
             </Stack>
-
         </>
     );
 }
