@@ -232,6 +232,18 @@ export default function App() {
                     )}
                     sx={{ width: '500px' }}
                 />
+                <h3>Autocomplete-multi-Small</h3>
+                <Autocomplete
+                    multiple
+                    id="tags-readOnly"
+                    size='small'
+                    options={top101Films.map((option) => option.title)}
+                    defaultValue={[top101Films[12].title, top101Films[13].title]}
+                    readOnly
+                    renderInput={(params) => (
+                        <TextField {...params} label="readOnly" placeholder="Favorites" />
+                    )}
+                />
             </Stack>
         </>
     );
